@@ -89,10 +89,10 @@ MergeIntervalsWithPriority(intervals, priorities)
 
 ## Constraints
 
-- 0 ≤ intervals.length ≤ 10,000
-- intervals.length == priorities.length
+- 0 ≤ intervals.Length ≤ 10,000
+- intervals.Length == priorities.Length
 - For each interval: 0 ≤ start ≤ end ≤ 1,000,000
-- For each priority (when intervals.length > 0): 1 ≤ priority ≤ 1,000,000
+- For each priority (when the intervals array is not empty): 1 ≤ priority ≤ 1,000,000
 - Intervals may be provided in any order
 - If input arrays are empty, return an empty list
 
