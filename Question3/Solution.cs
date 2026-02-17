@@ -2,7 +2,7 @@ namespace Question3;
 
 public class Solution
 {
-    public static bool IsPalindrome(string input)
+    public static Dictionary<int, int> CharacterFrequencyByPosition(string? input)
     {
         // TODO: Implement this method
         throw new NotImplementedException();
