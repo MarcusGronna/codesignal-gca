@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/Question1/">
+    <Project Path="Question1/Question1.Tests/Question1.Tests.csproj" />
+  </Folder>
+  <Folder Name="/Question2/">
+    <Project Path="Question2/Question2.Tests/Question2.Tests.csproj" />
+  </Folder>
+  <Folder Name="/Question3/">
+    <Project Path="Question3/Question3.Tests/Question3.Tests.csproj" />
+  </Folder>
+  <Folder Name="/Question4/">
+    <Project Path="Question4/Question4.Tests/Question4.Tests.csproj" />
+  </Folder>
+  <Project Path="Question1/Question1.csproj" />
+  <Project Path="Question2/Question2.csproj" />
+  <Project Path="Question3/Question3.csproj" />
+  <Project Path="Question4/Question4.csproj" />
+</Solution>
