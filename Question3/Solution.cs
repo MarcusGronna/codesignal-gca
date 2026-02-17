@@ -2,7 +2,7 @@ namespace Question3;
 
 public class Solution
 {
-    public static bool IsPalindrome(string input)
+    public static int FindMaximum(int[] numbers)
     {
         // TODO: Implement this method
         throw new NotImplementedException();
