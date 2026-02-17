@@ -1,51 +1,101 @@
-# Question 3: Character Frequency by Position
+# Question 3: Rotate Grid Border Clockwise
 
 ## Problem Description
 
-Write a function that analyzes a string and returns a dictionary where:
-- Keys are character positions (0-indexed) that contain digits
-- Values are the count of how many times that specific digit appears in the entire string
+Write a function that rotates **only the outer border** (the perimeter cells) of a 2D integer matrix clockwise by exactly 1 step, while keeping all inner cells unchanged. Return the new matrix as a result.
 
-Only include positions that contain digits (0-9). Ignore all other characters.
+The outer border consists of:
+- The entire first row
+- The entire last row
+- The first column (excluding corners already counted)
+- The last column (excluding corners already counted)
+
+A clockwise rotation by 1 step means each border element moves to the next position in the clockwise direction:
+1. Elements in the top row move one position to the right
+2. The top-right corner moves down to the second position of the right column
+3. Elements in the right column move one position down
+4. The bottom-right corner moves left to the second-to-last position of the bottom row
+5. Elements in the bottom row move one position to the left
+6. The bottom-left corner moves up to the second-to-last position of the left column
+7. Elements in the left column move one position up
+8. The top-left corner receives the element from the second position of the left column
 
 ## Function Signature
 
 ```csharp
-public static Dictionary<int, int> CharacterFrequencyByPosition(string? input)
+public static int[][] RotateBorderClockwise(int[][] grid)
 ```
 
 ## Parameters
 
-- `input`: A string to analyze (can be null or empty)
+- `grid`: A 2D integer array (rectangular, non-null) with height >= 2 and width >= 2
 
 ## Return Value
 
-- Returns a dictionary where keys are positions of digits and values are the frequency counts
-- Returns an empty dictionary if the string is null, empty, or contains no digits
-- Positions are 0-indexed based on the original string
+- Returns a new 2D integer array with the outer border rotated clockwise by 1 step
+- All inner cells (if any) remain in their original positions
+- The original matrix must not be mutated; return a deep copy
 
 ## Examples
 
-```csharp
-CharacterFrequencyByPosition("a1b2c1") 
-// returns { {1, 2}, {3, 1} }
-// Position 1 has '1' which appears 2 times total
-// Position 3 has '2' which appears 1 time total
+### Example 1
 
-CharacterFrequencyByPosition("hello123world321")
-// returns { {5, 2}, {6, 2}, {7, 2}, {13, 2}, {14, 2}, {15, 2} }
-// Position 5 has '1' (appears 2 times total), position 6 has '2' (appears 2 times total)
-// Position 7 has '3' (appears 2 times total), and so on
-
-CharacterFrequencyByPosition("no digits here")
-// returns { } (empty dictionary)
-
-CharacterFrequencyByPosition("")
-// returns { } (empty dictionary)
+Input:
 ```
+grid = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+]
+```
+
+Output:
+```
+[
+  [4, 1, 2],
+  [7, 5, 3],
+  [8, 9, 6]
+]
+```
+
+Explanation:
+- Border elements before: 1,2,3,6,9,8,7,4 (clockwise from top-left)
+- Border elements after rotation: 4,1,2,3,6,9,8,7 (each moved one position clockwise)
+- Center element 5 remains unchanged
+
+### Example 2
+
+Input:
+```
+grid = [
+  [1,  2,  3,  4],
+  [5,  6,  7,  8],
+  [9, 10, 11, 12]
+]
+```
+
+Output:
+```
+[
+  [5,  1,  2,  3],
+  [9,  6,  7,  4],
+  [10, 11, 12, 8]
+]
+```
+
+Explanation:
+- Border elements before: 1,2,3,4,8,12,11,10,9,5 (clockwise from top-left)
+- Border elements after rotation: 5,1,2,3,4,8,12,11,10,9 (each moved one position clockwise)
+- Inner elements 6 and 7 remain unchanged
 
 ## Constraints
 
-- String length: 0 ≤ length ≤ 10,000
-- Only ASCII characters
-- Count frequency across the entire string for each digit found at a position
+- 2 <= height <= 100
+- 2 <= width <= 100
+- -10^9 <= grid[i][j] <= 10^9
+
+## Notes
+
+- The function must preserve the rectangular shape of the matrix
+- Return a deep copy; do not modify the original input matrix
+- For a 2x2 matrix, all four elements are on the border (no inner cells)
