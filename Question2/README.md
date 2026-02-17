@@ -4,6 +4,8 @@
 
 Write a function that extracts all even numbers from an array, reverses their digits, and returns them as a comma-separated string.
 
+For negative numbers, preserve the negative sign and reverse only the digit portion.
+
 ## Function Signature
 
 ```csharp
@@ -19,6 +21,7 @@ public static string ExtractAndReverseEvens(int[]? numbers)
 - Returns a comma-separated string of reversed even numbers
 - Returns an empty string if there are no even numbers
 - Returns an empty string if the array is null or empty
+- For negative numbers, the negative sign is preserved and only digits are reversed (e.g., -12 becomes -21)
 
 ## Examples
 
