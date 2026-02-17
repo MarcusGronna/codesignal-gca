@@ -18,8 +18,8 @@ public class SolutionTests
         
         // Assert
         Assert.Equal(2, result.Count);
-        Assert.Equal(new int[] { 1, 6, 5 }, result[0]);
-        Assert.Equal(new int[] { 8, 10, 7 }, result[1]);
+        Assert.True(result[0].SequenceEqual(new int[] { 1, 6, 5 }));
+        Assert.True(result[1].SequenceEqual(new int[] { 8, 10, 7 }));
     }
     
     [Fact]
@@ -39,8 +39,8 @@ public class SolutionTests
         
         // Assert
         Assert.Equal(2, result.Count);
-        Assert.Equal(new int[] { 1, 8, 8 }, result[0]);
-        Assert.Equal(new int[] { 10, 12, 1 }, result[1]);
+        Assert.True(result[0].SequenceEqual(new int[] { 1, 8, 8 }));
+        Assert.True(result[1].SequenceEqual(new int[] { 10, 12, 1 }));
     }
     
     [Fact]
@@ -59,9 +59,9 @@ public class SolutionTests
         
         // Assert
         Assert.Equal(3, result.Count);
-        Assert.Equal(new int[] { 1, 2, 1 }, result[0]);
-        Assert.Equal(new int[] { 3, 4, 2 }, result[1]);
-        Assert.Equal(new int[] { 5, 6, 3 }, result[2]);
+        Assert.True(result[0].SequenceEqual(new int[] { 1, 2, 1 }));
+        Assert.True(result[1].SequenceEqual(new int[] { 3, 4, 2 }));
+        Assert.True(result[2].SequenceEqual(new int[] { 5, 6, 3 }));
     }
     
     [Fact]
@@ -90,7 +90,7 @@ public class SolutionTests
         
         // Assert
         Assert.Single(result);
-        Assert.Equal(new int[] { 5, 10, 42 }, result[0]);
+        Assert.True(result[0].SequenceEqual(new int[] { 5, 10, 42 }));
     }
     
     [Fact]
@@ -109,8 +109,8 @@ public class SolutionTests
         
         // Assert
         Assert.Equal(2, result.Count);
-        Assert.Equal(new int[] { 1, 6, 5 }, result[0]);
-        Assert.Equal(new int[] { 8, 10, 7 }, result[1]);
+        Assert.True(result[0].SequenceEqual(new int[] { 1, 6, 5 }));
+        Assert.True(result[1].SequenceEqual(new int[] { 8, 10, 7 }));
     }
     
     [Fact]

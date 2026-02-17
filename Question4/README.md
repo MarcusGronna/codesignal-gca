@@ -92,7 +92,7 @@ MergeIntervalsWithPriority(intervals, priorities)
 - 0 ≤ intervals.length ≤ 10,000
 - intervals.length == priorities.length
 - For each interval: 0 ≤ start ≤ end ≤ 1,000,000
-- 1 ≤ priority ≤ 1,000,000
+- For each priority (when intervals.length > 0): 1 ≤ priority ≤ 1,000,000
 - Intervals may be provided in any order
 - If input arrays are empty, return an empty list
 
