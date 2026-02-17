@@ -2,93 +2,231 @@ namespace Question3.Tests;
 
 public class SolutionTests
 {
-    [Fact]
-    public void CharacterFrequencyByPosition_WithSimpleInput_ReturnsCorrectDictionary()
+    // Helper method for deep equality comparison of 2D arrays
+    private void AssertMatricesEqual(int[][] expected, int[][] actual)
     {
-        // Arrange
-        string input = "a1b2c1";
+        Assert.NotNull(actual);
+        Assert.Equal(expected.Length, actual.Length);
         
-        // Act
-        var result = Solution.CharacterFrequencyByPosition(input);
-        
-        // Assert
-        Assert.Equal(2, result.Count);
-        Assert.Equal(2, result[1]); // Position 1 has '1', which appears 2 times
-        Assert.Equal(1, result[3]); // Position 3 has '2', which appears 1 time
+        for (int i = 0; i < expected.Length; i++)
+        {
+            Assert.NotNull(actual[i]);
+            Assert.Equal(expected[i].Length, actual[i].Length);
+            
+            for (int j = 0; j < expected[i].Length; j++)
+            {
+                Assert.Equal(expected[i][j], actual[i][j]);
+            }
+        }
     }
     
     [Fact]
-    public void CharacterFrequencyByPosition_WithMultipleDigits_ReturnsCorrectFrequencies()
+    public void RotateBorderClockwise_Example1_3x3Grid()
     {
         // Arrange
-        string input = "hello123world321";
+        int[][] grid = new int[][]
+        {
+            new int[] { 1, 2, 3 },
+            new int[] { 4, 5, 6 },
+            new int[] { 7, 8, 9 }
+        };
+        
+        int[][] expected = new int[][]
+        {
+            new int[] { 4, 1, 2 },
+            new int[] { 7, 5, 3 },
+            new int[] { 8, 9, 6 }
+        };
         
         // Act
-        var result = Solution.CharacterFrequencyByPosition(input);
+        var result = Solution.RotateBorderClockwise(grid);
         
         // Assert
-        Assert.Equal(6, result.Count);
-        Assert.Equal(2, result[5]);  // Position 5 has '1', appears 2 times total
-        Assert.Equal(2, result[6]);  // Position 6 has '2', appears 2 times total
-        Assert.Equal(2, result[7]);  // Position 7 has '3', appears 2 times total
-        Assert.Equal(2, result[13]); // Position 13 has '3', appears 2 times total
-        Assert.Equal(2, result[14]); // Position 14 has '2', appears 2 times total
-        Assert.Equal(2, result[15]); // Position 15 has '1', appears 2 times total
+        AssertMatricesEqual(expected, result);
     }
     
     [Fact]
-    public void CharacterFrequencyByPosition_WithNoDigits_ReturnsEmptyDictionary()
+    public void RotateBorderClockwise_Example2_3x4Grid()
     {
         // Arrange
-        string input = "no digits here";
+        int[][] grid = new int[][]
+        {
+            new int[] { 1, 2, 3, 4 },
+            new int[] { 5, 6, 7, 8 },
+            new int[] { 9, 10, 11, 12 }
+        };
+        
+        int[][] expected = new int[][]
+        {
+            new int[] { 5, 1, 2, 3 },
+            new int[] { 9, 6, 7, 4 },
+            new int[] { 10, 11, 12, 8 }
+        };
         
         // Act
-        var result = Solution.CharacterFrequencyByPosition(input);
+        var result = Solution.RotateBorderClockwise(grid);
         
         // Assert
-        Assert.Empty(result);
+        AssertMatricesEqual(expected, result);
     }
     
     [Fact]
-    public void CharacterFrequencyByPosition_WithEmptyString_ReturnsEmptyDictionary()
+    public void RotateBorderClockwise_MinimumSize_2x2Grid()
     {
         // Arrange
-        string input = "";
+        int[][] grid = new int[][]
+        {
+            new int[] { 1, 2 },
+            new int[] { 3, 4 }
+        };
+        
+        int[][] expected = new int[][]
+        {
+            new int[] { 3, 1 },
+            new int[] { 4, 2 }
+        };
         
         // Act
-        var result = Solution.CharacterFrequencyByPosition(input);
+        var result = Solution.RotateBorderClockwise(grid);
         
         // Assert
-        Assert.Empty(result);
+        AssertMatricesEqual(expected, result);
     }
     
     [Fact]
-    public void CharacterFrequencyByPosition_WithNullString_ReturnsEmptyDictionary()
+    public void RotateBorderClockwise_NonSquare_2x5Grid()
     {
         // Arrange
-        string? input = null;
+        int[][] grid = new int[][]
+        {
+            new int[] { 1, 2, 3, 4, 5 },
+            new int[] { 6, 7, 8, 9, 10 }
+        };
+        
+        int[][] expected = new int[][]
+        {
+            new int[] { 6, 1, 2, 3, 4 },
+            new int[] { 7, 8, 9, 10, 5 }
+        };
         
         // Act
-        var result = Solution.CharacterFrequencyByPosition(input);
+        var result = Solution.RotateBorderClockwise(grid);
         
         // Assert
-        Assert.Empty(result);
+        AssertMatricesEqual(expected, result);
     }
     
     [Fact]
-    public void CharacterFrequencyByPosition_WithAllSameDigit_ReturnsCorrectCounts()
+    public void RotateBorderClockwise_LargerGrid_InnerCellsUnchanged()
     {
         // Arrange
-        string input = "5a5b5c5";
+        int[][] grid = new int[][]
+        {
+            new int[] { 1, 2, 3, 4, 5 },
+            new int[] { 6, 7, 8, 9, 10 },
+            new int[] { 11, 12, 13, 14, 15 },
+            new int[] { 16, 17, 18, 19, 20 }
+        };
+        
+        int[][] expected = new int[][]
+        {
+            new int[] { 6, 1, 2, 3, 4 },
+            new int[] { 11, 7, 8, 9, 5 },
+            new int[] { 16, 12, 13, 14, 10 },
+            new int[] { 17, 18, 19, 20, 15 }
+        };
         
         // Act
-        var result = Solution.CharacterFrequencyByPosition(input);
+        var result = Solution.RotateBorderClockwise(grid);
         
         // Assert
-        Assert.Equal(4, result.Count);
-        Assert.Equal(4, result[0]); // Position 0 has '5', appears 4 times
-        Assert.Equal(4, result[2]); // Position 2 has '5', appears 4 times
-        Assert.Equal(4, result[4]); // Position 4 has '5', appears 4 times
-        Assert.Equal(4, result[6]); // Position 6 has '5', appears 4 times
+        AssertMatricesEqual(expected, result);
+        
+        // Verify inner cells are unchanged
+        Assert.Equal(7, result[1][1]);
+        Assert.Equal(8, result[1][2]);
+        Assert.Equal(9, result[1][3]);
+        Assert.Equal(12, result[2][1]);
+        Assert.Equal(13, result[2][2]);
+        Assert.Equal(14, result[2][3]);
+    }
+    
+    [Fact]
+    public void RotateBorderClockwise_OriginalNotMutated()
+    {
+        // Arrange
+        int[][] grid = new int[][]
+        {
+            new int[] { 1, 2, 3 },
+            new int[] { 4, 5, 6 },
+            new int[] { 7, 8, 9 }
+        };
+        
+        // Create a copy of the original to verify it doesn't change
+        int[][] originalCopy = new int[][]
+        {
+            new int[] { 1, 2, 3 },
+            new int[] { 4, 5, 6 },
+            new int[] { 7, 8, 9 }
+        };
+        
+        // Act
+        var result = Solution.RotateBorderClockwise(grid);
+        
+        // Assert - verify original is unchanged
+        AssertMatricesEqual(originalCopy, grid);
+        
+        // Also verify result is different from original
+        Assert.NotEqual(grid[0][0], result[0][0]);
+    }
+    
+    [Fact]
+    public void RotateBorderClockwise_WithNegativeValues()
+    {
+        // Arrange
+        int[][] grid = new int[][]
+        {
+            new int[] { -1, -2, -3 },
+            new int[] { -4, 0, -5 },
+            new int[] { -6, -7, -8 }
+        };
+        
+        int[][] expected = new int[][]
+        {
+            new int[] { -4, -1, -2 },
+            new int[] { -6, 0, -3 },
+            new int[] { -7, -8, -5 }
+        };
+        
+        // Act
+        var result = Solution.RotateBorderClockwise(grid);
+        
+        // Assert
+        AssertMatricesEqual(expected, result);
+    }
+    
+    [Fact]
+    public void RotateBorderClockwise_TallGrid_3x2()
+    {
+        // Arrange
+        int[][] grid = new int[][]
+        {
+            new int[] { 1, 2 },
+            new int[] { 3, 4 },
+            new int[] { 5, 6 }
+        };
+        
+        int[][] expected = new int[][]
+        {
+            new int[] { 3, 1 },
+            new int[] { 5, 2 },
+            new int[] { 6, 4 }
+        };
+        
+        // Act
+        var result = Solution.RotateBorderClockwise(grid);
+        
+        // Assert
+        AssertMatricesEqual(expected, result);
     }
 }
