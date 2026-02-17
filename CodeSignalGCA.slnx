@@ -1,0 +1,10 @@
+<Solution>
+  <Project Path="Question1.Tests/Question1.Tests.csproj" />
+  <Project Path="Question1/Question1.csproj" />
+  <Project Path="Question2.Tests/Question2.Tests.csproj" />
+  <Project Path="Question2/Question2.csproj" />
+  <Project Path="Question3.Tests/Question3.Tests.csproj" />
+  <Project Path="Question3/Question3.csproj" />
+  <Project Path="Question4.Tests/Question4.Tests.csproj" />
+  <Project Path="Question4/Question4.csproj" />
+</Solution>
