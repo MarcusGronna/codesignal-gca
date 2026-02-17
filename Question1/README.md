@@ -34,7 +34,7 @@ numbers = [1, 2, 3, 4, 5, 6]
 12
 ```
 
-**Explanation:** The even numbers are 2, 4, and 6. Their sum is 2 + 4 + 6 = 12
+**Explanation:** The even numbers are 2, 4, and 6. Their sum is 2 + 4 + 6 = 12.
 
 ### Example 2
 
@@ -48,7 +48,7 @@ numbers = [1, 3, 5, 7]
 0
 ```
 
-**Explanation:** There are no even numbers in the array, so the sum is 0
+**Explanation:** There are no even numbers in the array, so the sum is 0.
 
 ## Constraints
 
