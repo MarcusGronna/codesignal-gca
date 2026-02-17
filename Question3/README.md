@@ -33,9 +33,9 @@ CharacterFrequencyByPosition("a1b2c1")
 // Position 3 has '2' which appears 1 time total
 
 CharacterFrequencyByPosition("hello123world321")
-// returns { {5, 1}, {6, 2}, {7, 3}, {13, 3}, {14, 2}, {15, 1} }
-// Position 5 has '1' (appears 1 time), position 6 has '2' (appears 2 times)
-// Position 7 has '3' (appears 3 times), etc.
+// returns { {5, 2}, {6, 2}, {7, 2}, {13, 2}, {14, 2}, {15, 2} }
+// Position 5 has '1' (appears 2 times total), position 6 has '2' (appears 2 times total)
+// Position 7 has '3' (appears 2 times total), and so on
 
 CharacterFrequencyByPosition("no digits here")
 // returns { } (empty dictionary)
